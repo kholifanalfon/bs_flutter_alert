@@ -14,9 +14,6 @@ dependencies:
 ```
 
 ### Alert
-Example: [`main.dart`](https://github.com/kholifanalfon/bs_flutter_alert/blob/main/example/lib/main.dart)
-
-![Alt text](https://raw.githubusercontent.com/kholifanalfon/bs_flutter_alert/main/screenshot/example.png "Screenshot Example Alert")
 
 Alert success
 ```dart
