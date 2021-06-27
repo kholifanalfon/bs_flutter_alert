@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:bs_flutter_alert/bs_flutter_alert.dart';
+import 'package:bs_flutter_responsive/bs_flutter_responsive.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,34 +12,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await BsFlutterAlert.platformVersion ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
@@ -49,10 +23,110 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Bootstrap Alert'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Container(
+          padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+          child: BsRow(
+            gutter: EdgeInsets.only(left: 10.0, right: 10.0),
+            children: [
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  child: Text('Alert Primary'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.secondary,
+                  child: Text('Alert Secondary'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.success,
+                  child: Text('Alert Success'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.danger,
+                  child: Text('Alert Danger'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.warning,
+                  child: Text('Alert Warning'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.info,
+                  child: Text('Alert Info'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.light,
+                  child: Text('Alert Light'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen(md: Col.col_4),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.dark,
+                  child: Text('Alert Dark'),
+                ),
+              ),
+              BsCol(
+                margin: EdgeInsets.only(bottom: 10.0),
+                sizes: ColScreen.all(Col.col_12),
+                child: BsAlert(
+                  closeButton: true,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  style: BsAlertStyle.success,
+                  heading: Text('Hello World'),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Alert Dark'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
